@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Valiant360
 Copyright (c) 2014 Charlie Hoey
 
@@ -8,42 +8,51 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
-
 <!DOCTYPE HTML>
 <html lang="en">
-	<head>
-		<title>Valiant 360 Pano Player</title>
-		<meta charset="utf-8">
 
-		<!-- Valiant360 control styles -->
-		<link rel="stylesheet" type="text/css" href="css/valiant360.css" />
+<head>
+    <title>60 Pano Player</title>
+    <meta charset="utf-8">
+    <!-- Valiant360 control styles -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+</head>
 
-	</head>
-	<body>
+<body>
 
-		<div class="valiantPhoto" data-video-src="cam0.kava.mp4" style="width: 480px; height: 380px;"></div>
 
-		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="js/three.min.js"></script>
+    <div class="valiantPhoto" id="player-360" data-video-src="cam0.kava.mp4" style="width: 960px; height: 760px; margin: 40px auto;">
+    	<div class="cover"></div>
+    	<div class="dialog">
+    		<div class="preplay">
+    			<h3>There's 3 hidden objects can you find them?</h3>
+    			<ul>
+    				<li>A bottle of wine</li>
+    				<li>A banana</li>
+    				<li>A pen</li>
+    			</ul>
+    			<button class="start">Start >></button>
+    		</div>
 
-		<!-- Valiant360 plugin, load after jQuery and Three.js -->
-		<script type="text/javascript" src="jquery.valiant360.min.js"></script>
+	    	<div class="playing">
+  	  		<h3>Found:</h3>
+    			<ul class="foundlist"></ul>
+    		</div>
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('.valiantPhoto').Valiant360();
-			});
-		</script>
+    		<!-- Canvas will be inserted here -->
 
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    </div>
 
-		  ga('create', 'UA-608903-14', 'flimshaw.net');
-		  ga('send', 'pageview');
 
-		</script>
-	</body>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/three.min.js"></script>
+    <!-- Valiant360 plugin, load after jQuery and Three.js -->
+    <script type="text/javascript" src="valiant/src/lib/Detector.js"></script>
+    <script type="text/javascript" src="valiant/src/valiant.jquery.js"></script>
+    <script type="text/javascript" src="js/spotMe.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
 </html>
