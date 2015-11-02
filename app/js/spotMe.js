@@ -10,20 +10,10 @@
 
 jQuery 1.7.2 or greater
 three.js r65 or higher
+Valiant 360 player
 
 */
 
-
-/*!
- * jQuery lightweight plugin boilerplate
- * Original author: @ajpiano
- * Further changes, comments: @addyosmani
- * Licensed under the MIT license
- */
-
-// the semi-colon before the function invocation is a safety
-// net against concatenated scripts and/or other plugins
-// that are not closed properly.
 ;
 (function($, THREE, Detector, window, document, undefined) {
 
@@ -91,20 +81,23 @@ three.js r65 or higher
             //Assigns the public properties to a variable for easy access
             var Player360 = $(this.element).data('plugin_Valiant360');
 
-
+            //Adds a surface which can be added to the geometry created
             var material = new THREE.MeshBasicMaterial({
                 color: 0xff0000,
                 transparent: true,
                 opacity: this.options.showHiddenObjs
             });
 
+            //Cylces through the hidden objects array
             var hiddenObjs = this.options.hiddenObjs;
             for (var i = 0; i < hiddenObjs.length; i++) {
 
+                //Create geometry dependent on shape passed to it.
                 var geometry = new THREE.CubeGeometry(hiddenObjs[i].geom[0], hiddenObjs[i].geom[1], hiddenObjs[i].geom[2]);
 
                 hiddenObjs[i].threeObj = new THREE.Mesh(geometry, material);
 
+                //Object is then placed into the scene by calculating x,y and z parameters based on long and latitude.
                 var herelat = Math.max(-85, Math.min(85, hiddenObjs[i].lat));
                 var herephi = (90 - hiddenObjs[i].lat) * Math.PI / 180;
                 var heretheta = hiddenObjs[i].lon * Math.PI / 180;
@@ -125,12 +118,13 @@ three.js r65 or higher
 
             //Checks if a right click has found an object
             function mouseDownCanvas(event) {
-                //Is it a rigt click?
 
                 var currVidTime = Player360._video.currentTime;
+                //Is it a rigt click?
                 if (event.which === 3) {
                     event.preventDefault();
 
+                    //Compares location of mouse click by finding angle of click to camera and the angle of object to camera.
                     var vectorMouse = new THREE.Vector3( //vector from camera to mouse
                         -(window.innerWidth / 2 - event.clientX) * 2 / window.innerHeight, (window.innerHeight / 2 - event.clientY) * 2 / window.innerHeight, -1 / Math.tan(22.5 * Math.PI / 180)); //22.5 is half of camera frustum angle 45 degree
                     vectorMouse.applyQuaternion(Player360._camera.quaternion);
@@ -144,9 +138,10 @@ three.js r65 or higher
                             hiddenObjs[i].threeObj.position.z - Player360._camera.position.z);
                         vectorObject.normalize();
 
+                        //If angles are close together
                         if (vectorMouse.angleTo(vectorObject) * 180 / Math.PI < 10) {
                             //mouse's position is near object's position
-
+                            //Checks each obejct to see is clicked within the time ranges and runs either found callback or keep looking callback.
                             for(var t=0; t<hiddenObjs[i].timeRanges.length; t = t+2) {
                                 if(currVidTime > hiddenObjs[i].timeRanges[t] && currVidTime < hiddenObjs[i].timeRanges[t+1]) {
                                     this.options.found(i);
