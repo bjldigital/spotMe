@@ -4,6 +4,8 @@
 
 An extension of the Valiant 360 (https://github.com/flimshaw/Valiant360) plugin to add objects into the ThreeJS scene created, allow them to be shown and hidden and detect when they are clicked.
 
+Plugin code is available at: ```spotMe/app/js/spotMe.js```
+
 The plugin has several dependencies.
 
 - jQuery
@@ -12,6 +14,13 @@ The plugin has several dependencies.
 - The Valiant 360 player
 
 These are all packaged within the repository but you may wish to load them from elsewhere.
+
+##To run demo
+
+- Clone repository
+- Open terminal in repository location
+- Run ```npm install```
+- Run ```grunt serve```
 
 
 ##Options
