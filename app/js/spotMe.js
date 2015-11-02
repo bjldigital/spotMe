@@ -57,7 +57,8 @@ three.js r65 or higher
                 debug: false,
                 flatProjection: false,
                 autoplay: true
-            }
+            },
+            hiddenObjs: []
         };
 
     // The actual plugin constructor

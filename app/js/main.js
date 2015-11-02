@@ -5,7 +5,7 @@
             lat: 0,
             geom:[20,50,10],
             timeRanges: [0, 100],
-            display: "Lambrini"
+            display: "Bottle of Wine"
         }, {
             lon: -75,
             lat: 10,
