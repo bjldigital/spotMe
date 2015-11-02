@@ -1,6 +1,6 @@
 # spotMe
 
-##A quick exploration with 360 videos and the plugin Valiant360
+##A 'spot the hidden object' plugin built as an experiment with 360 videos and the 360 video player Valiant360.
 
 An extension of the Valiant 360 (https://github.com/flimshaw/Valiant360) plugin to add objects into the ThreeJS scene created, allow them to be shown and hidden and detect when they are clicked.
 
